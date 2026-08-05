@@ -83,7 +83,7 @@ def get_scholar_data(scholar_id):
         # fill_pub = scholarly.fill(pub) 
         all_pubs.append(pub)
         # Process first 10 for demonstration; remove [:10] for all.
-        if len(all_pubs) >= 10: break 
+        # if len(all_pubs) >= 10: break 
 
     print(f"Processed {len(all_pubs)} publications.")
     
