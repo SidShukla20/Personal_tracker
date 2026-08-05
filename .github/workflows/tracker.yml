@@ -4,8 +4,11 @@ on:
   schedule:
     # Runs every Monday at 12:00 PM EST / 16:00 UTC
     - cron: '0 16 * * 1'
-  # Allows you to manually trigger the script anytime from the Actions tab
   workflow_dispatch:
+
+# Explicitly grant write access to commit updated index.html back to main
+permissions:
+  contents: write
 
 jobs:
   update-tracker:
@@ -13,17 +16,17 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5.3.0
         with:
           python-version: '3.10'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install scholarly
+          pip install requests
 
       - name: Run Update Script
         run: python update_tracker.py
