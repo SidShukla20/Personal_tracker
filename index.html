@@ -4,96 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siddharth Shukla - Citation Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #007bff;
-            --secondary: #6c757d;
-            --background: #f8f9fa;
-            --text: #333;
-            --card-bg: #fff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --bg: #F9F8F6;
+            --card-bg: #FFFFFF;
+            --text-main: #1F1E1D;
+            --text-muted: #6E6D6A;
+            --accent: #C15F3C;
+            --accent-light: #FBF0EB;
+            --border: #E6E4DD;
+            --radius-lg: 12px;
+            --radius-sm: 6px;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
             margin: 0;
-            padding: 20px;
-            background-color: var(--background);
-            color: var(--text);
-            line-height: 1.6;
+            padding: 40px 20px;
+            line-height: 1.5;
         }
+
         .container {
-            max-width: 1100px;
+            max-width: 960px;
             margin: 0 auto;
         }
+
         header {
-            text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
         }
+
         h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
+            font-family: 'Newsreader', serif;
+            font-size: 2.25rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin: 0 0 6px 0;
+            letter-spacing: -0.01em;
         }
+
         .last-updated {
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-        .summary-container {
+            font-size: 0.875rem;
+            color: var(--text-muted);
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .last-updated::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #2e7d32;
+            border-radius: 50%;
+        }
+
+        /* Metrics Summary Cards */
+        .summary-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
             margin-bottom: 40px;
         }
+
         .summary-card {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            flex: 1;
-            text-align: center;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            transition: border-color 0.2s ease;
         }
+
+        .summary-card:hover {
+            border-color: #D1CF00;
+        }
+
         .summary-card h3 {
-            margin: 0 0 10px 0;
-            color: var(--secondary);
+            margin: 0 0 8px 0;
+            font-size: 0.8125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
             font-weight: 600;
         }
+
         .summary-card p {
-            font-size: 2.5em;
-            font-weight: bold;
+            font-family: 'Newsreader', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
             margin: 0;
-            color: var(--primary);
+            color: var(--accent);
+            line-height: 1;
         }
+
+        /* Table Design */
+        section-title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .table-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-        th, td {
-            padding: 15px;
             text-align: left;
-            border-bottom: 1px solid #e9ecef;
         }
+
         th {
-            background-color: var(--primary);
-            color: white;
+            background-color: #FAF9F5;
+            padding: 12px 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
             font-weight: 600;
+            border-bottom: 1px solid var(--border);
         }
+
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9375rem;
+        }
+
         tr:last-child td {
             border-bottom: none;
         }
-        .badge {
-            background-color: #e7f5ff;
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9em;
+
+        tr:hover td {
+            background-color: #FCFCFA;
         }
+
         .paper-title {
+            font-weight: 500;
+            color: var(--text-main);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .paper-authors {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
             font-weight: 600;
-            color: #333;
+            font-size: 0.8125rem;
+        }
+
+        @media (max-width: 640px) {
+            .summary-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -101,8 +185,10 @@
 
 <div class="container">
     <header>
-        <h1>Siddharth Shukla: Citation Tracker</h1>
-        <p class="last-updated">Last Updated: <span id="update-timestamp">[Pending Automation]</span></p>
+        <h1>Siddharth Shukla</h1>
+        <div class="last-updated">
+            Last Updated: <span id="update-timestamp">[Pending Automation]</span>
+        </div>
     </header>
 
     <div class="summary-container">
@@ -120,33 +206,21 @@
         </div>
     </div>
 
-    <h2>Publication Breakdown</h2>
-    <table id="publications-table">
-        <thead>
-            <tr>
-                <th>Title & Authors</th>
-                <th>Year</th>
-                <th>Citations</th>
-            </tr>
-        </thead>
-        <tbody id="publications-body">
-            <!-- This section will be populated by the automation script -->
-            <tr>
-                <td><span class="paper-title">Exploring chemical modifications for siRNA therapeutics: a structural and functional outlook</span><br>
-                    <span style="font-size:0.9em;color:#666">S Shukla, CS Sumaria, PI Pradeepkumar</span></td>
-                <td>2010</td>
-                <td><span class="badge">266</span></td>
-            </tr>
-            <tr>
-                <td><span class="paper-title">Inhibition of telomerase RNA decay rescues telomerase deficiency caused by dyskerin or PARN defects</span><br>
-                    <span style="font-size:0.9em;color:#666">S Shukla, JC Schmidt, KC Goldfarb, TR Cech, R Parker</span></td>
-                <td>2016</td>
-                <td><span class="badge">156</span></td>
-            </tr>
-            <!-- More rows will be added here by the script -->
-        </tbody>
-    </table>
-
+    <div class="section-title">Publication Overview</div>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Title & Authors</th>
+                    <th style="width: 80px;">Year</th>
+                    <th style="width: 100px; text-align: right;">Citations</th>
+                </tr>
+            </thead>
+            <tbody id="publications-body">
+                <!-- Dynamically populated by update_tracker.py -->
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>
