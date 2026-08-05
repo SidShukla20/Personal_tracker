@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddharth Shukla - Citation Tracker</title>
+    <style>
+        :root {
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --background: #f8f9fa;
+            --text: #333;
+            --card-bg: #fff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .last-updated {
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+        .summary-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .summary-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            flex: 1;
+            text-align: center;
+        }
+        .summary-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        .summary-card p {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0;
+            color: var(--primary);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .badge {
+            background-color: #e7f5ff;
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .paper-title {
+            font-weight: 600;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Siddharth Shukla: Citation Tracker</h1>
+        <p class="last-updated">Last Updated: <span id="update-timestamp">[Pending Automation]</span></p>
+    </header>
+
+    <div class="summary-container">
+        <div class="summary-card">
+            <h3>Total Citations</h3>
+            <p id="total-citations">876</p>
+        </div>
+        <div class="summary-card">
+            <h3>h-index</h3>
+            <p id="h-index">9</p>
+        </div>
+        <div class="summary-card">
+            <h3>i10-index</h3>
+            <p id="i10-index">9</p>
+        </div>
+    </div>
+
+    <h2>Publication Breakdown</h2>
+    <table id="publications-table">
+        <thead>
+            <tr>
+                <th>Title & Authors</th>
+                <th>Year</th>
+                <th>Citations</th>
+            </tr>
+        </thead>
+        <tbody id="publications-body">
+            <!-- This section will be populated by the automation script -->
+            <tr>
+                <td><span class="paper-title">Exploring chemical modifications for siRNA therapeutics: a structural and functional outlook</span><br>
+                    <span style="font-size:0.9em;color:#666">S Shukla, CS Sumaria, PI Pradeepkumar</span></td>
+                <td>2010</td>
+                <td><span class="badge">266</span></td>
+            </tr>
+            <tr>
+                <td><span class="paper-title">Inhibition of telomerase RNA decay rescues telomerase deficiency caused by dyskerin or PARN defects</span><br>
+                    <span style="font-size:0.9em;color:#666">S Shukla, JC Schmidt, KC Goldfarb, TR Cech, R Parker</span></td>
+                <td>2016</td>
+                <td><span class="badge">156</span></td>
+            </tr>
+            <!-- More rows will be added here by the script -->
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
